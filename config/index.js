@@ -1,3 +1,4 @@
+const path = require("path");
 const config = {
   projectName: 'testaro',
   date: '2021-1-13',
@@ -59,6 +60,9 @@ const config = {
         }
       }
     }
+  },
+  sass: {
+    resource: path.resolve(__dirname, '..', 'src/common.scss')
   }
 }
 

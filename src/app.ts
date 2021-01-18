@@ -1,4 +1,6 @@
 import { Component } from 'react'
+import 'taro-ui/dist/style/index.scss';//全局引入taro-ui样式
+import './common.scss';
 import './app.scss'
 
 class App extends Component {

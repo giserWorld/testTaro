@@ -1,0 +1,7 @@
+$browser-default-font-size: 16px !default; //变量的值可以根据自己需求定义
+
+/*px转rem(自定义函数)*/
+@function pxTorem($px) {
+    //$px为需要转换的字号
+    @return $px / $browser-default-font-size * 1rem;
+}
