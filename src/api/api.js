@@ -31,13 +31,12 @@ export function get(url, param,callback){
         data:param,
         header:headers,//请求头
         success: function (response) {
-          console.log(response.data)
-          let statusCode=response.status==200?200:-1;//请求状态：成功:200,失败:-1
-          let requestParam=response.config.params||{};
+          let statusCode=response.statusCode==200?200:-1;//请求状态：成功:200,失败:-1
+          //let requestParam=response.config.params||{};
           let data=response.data;
           let responseData={
               status:statusCode,//状态码
-              param:requestParam,//参数对象
+              //param:requestParam,//参数对象
               returnData:data//请求响应数据
           };
           callback(responseData);
@@ -59,18 +58,15 @@ export function post(url,param,callback){
         method:"POST",
         data:param,
         header:headers,//请求头
-        success: function (response) {
-          console.log(response.data)
-            if(response.status==200){
-                let param=response.config.data?qs.parse(response.config.data):{};
-                let result={
-                    param:param,
-                    text:response.request.responseText,
-                    data:response.data,
-                    status:response.status
-                };
-                callback(result);
-            }
+        success: function (response){
+            let statusCode=response.statusCode==200?200:-1;//请求状态：成功:200,失败:-1
+            let data=response.data;
+            let responseData={
+                status:statusCode,//状态码
+                //param:requestParam,//参数对象
+                returnData:data//请求响应数据
+            };
+            callback(responseData);
         }
     })
 }//e

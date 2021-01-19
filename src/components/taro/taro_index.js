@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { View, Text } from '@tarojs/components'
+import { View, Text,Button } from '@tarojs/components';
+import Taro from '@tarojs/taro';
 import './index.scss'
 
 /*********************index**********************

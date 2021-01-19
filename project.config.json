@@ -2,7 +2,7 @@
   "miniprogramRoot": "dist/",
   "projectname": "testTaro",
   "description": "",
-  "appid": "touristappid",
+  "appid": "wx28bf1711ca6dad61",
   "setting": {
     "urlCheck": true,
     "es6": false,
@@ -23,7 +23,7 @@
     "compileHotReLoad": false,
     "useMultiFrameRuntime": true,
     "useApiHook": true,
-    "useApiHostProcess": false,
+    "useApiHostProcess": true,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
