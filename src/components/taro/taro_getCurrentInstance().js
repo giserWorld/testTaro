@@ -17,6 +17,8 @@ class index extends Component {
   clickFun(){
     let currentPage=getCurrentInstance();//获取当前页面对象
     let router=currentPage.router;//页面路由
+    let path=router.path||"";//页面地址,"/pages/taroPage/index"
+    let params=router.params||{};//url参数,{}
     console.log("router:",router);
   }//e
   

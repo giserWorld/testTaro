@@ -3,8 +3,10 @@ import { View, Text } from '@tarojs/components'
 import Index from '../../components/taro/taro_index';
 import Taro_Image from '../../components/taro/taro_Image';
 import Taro_request from '../../components/taro/taro_request';
+import Test_widget from '../../components/taro/test_widget';
 //Plugin
-import Plugin_banner from '../../components/taro/plugin_banner';
+import Plugin_banner from '../../components/taro/plugin_Banner';
+import Plugin_NavBar from '../../components/taro/plugin_NavBar';
 //api
 import Lifecycle_componentDidShow from '../../components/taro/lifecycle_componentDidShow';
 import Taro_getCurrentInstance from '../../components/taro/taro_getCurrentInstance()';
@@ -38,7 +40,7 @@ export default class Testpage extends Component {
   render () {
     return (
       <View className='testpage'>
-        <Taro_login name={this.state.name}/>
+        <Taro_getCurrentInstance name={this.state.name}/>
       </View>
     )
   }
