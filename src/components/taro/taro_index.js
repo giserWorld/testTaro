@@ -16,7 +16,7 @@ class index extends Component {
   render () {
     return (
       <View className='testpage'>
-        <Text className="my-h2">{this.state.name}</Text>
+        <Text className="my-h2">{this.state.name}</Text><View></View>
       </View>
     )
   }

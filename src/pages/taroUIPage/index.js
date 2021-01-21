@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { View, Text } from '@tarojs/components'
-import Index from '../../components/taroUI/index';
+import Ui_index from '../../components/taroUI/ui_index';
 import Ui_Swiper from '../../components/taroUI/ui_Swiper';
+import Ui_AtActivityIndicator from '../../components/taroUI/ui_AtActivityIndicator';
 
 //测试页面
 export default class taroUIPage extends Component {
@@ -24,7 +25,7 @@ export default class taroUIPage extends Component {
   render () {
     return (
       <View className='taroUIPage'>
-        <Ui_Swiper name={this.state.name}/>
+        <Ui_AtActivityIndicator name={this.state.name}/>
       </View>
     )
   }

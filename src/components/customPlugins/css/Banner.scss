@@ -1,0 +1,19 @@
+.my-swiper{
+    width:100%;
+    $height:pxTorem(160px);
+    height: $height;
+    margin: 0 auto;
+    position: relative;
+    .swiper-img {
+        width:100%;
+        height: $height;
+        border-radius: 0.3rem; 
+    }
+    .swiper-img-title{
+        position: absolute;
+        z-index: 2;
+        color: #fff;
+        height: 2.5rem;
+        width: 96%;
+    }
+}

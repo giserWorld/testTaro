@@ -12,6 +12,8 @@ import Lifecycle_componentDidShow from '../../components/taro/lifecycle_componen
 import Taro_getCurrentInstance from '../../components/taro/taro_getCurrentInstance()';
 import Taro_showLoading from '../../components/taro/taro_showLoading()';
 import Taro_login from '../../components/taro/taro_login()';
+import Taro_ScrollView from '../../components/taro/taro_ScrollView';
+import Taro_ScrollView_fy from '../../components/taro/taro_ScrollView_fy';
 
 //测试页面
 export default class Testpage extends Component {
@@ -39,8 +41,8 @@ export default class Testpage extends Component {
 
   render () {
     return (
-      <View className='testpage'>
-        <Taro_getCurrentInstance name={this.state.name}/>
+      <View className='wrap testpage'>
+        <Taro_ScrollView_fy name={this.state.name}/>
       </View>
     )
   }
