@@ -31,7 +31,7 @@ export default class Testpage extends Component {
 
   //组件切换显示时触发
   componentDidShow(){
-    console.log("componentDidShow");
+    //console.log("componentDidShow");
   }//e
 
   //组件切换隐藏时触发

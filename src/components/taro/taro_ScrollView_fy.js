@@ -9,6 +9,8 @@ import './index.scss'
  *
 */
 class index extends Component {
+  staticProps="静态属性";//静态属性
+  start_p={};//触摸开始位置
   constructor(props) {
       super(props);
       this.state = {
@@ -30,11 +32,13 @@ class index extends Component {
         },
         pullText:'上拉加载更多',
         downText:'下拉刷新',
-        start_p:{},
         scrollY:true,//开启纵向滚动
         dargState:0//刷新状态 0不做操作 1刷新 -1加载更多
       };
   }
+  componentDidMount(){
+    console.log("_self:",this);
+  }//e
 
 /******************分页********************/
 
@@ -73,14 +77,14 @@ class index extends Component {
   
   //触摸移动
   touchmove(e) {
-      let that = this
+      let that = this;
       let move_p = e.touches[0],//移动时的位置
       deviationX = 0.30,//左右偏移量(超过这个偏移量不执行下拉操作)
       deviationY = 70,//拉动长度（低于这个值的时候不执行）
       maxY = 100;//拉动的最大高度
 
-      let start_x = this.state.start_p.clientX,
-          start_y = this.state.start_p.clientY,
+      let start_x = this.start_p.clientX,
+          start_y = this.start_p.clientY,
           move_x = move_p.clientX,
           move_y = move_p.clientY;
       //得到偏移数值
@@ -132,19 +136,21 @@ class index extends Component {
 
   //触摸开始
   touchStart(e){
-      this.setState({
-          start_p: e.touches[0]
-      })
+      // this.setState({
+      //     start_p: e.touches[0]
+      // })
+      this.start_p=e.touches[0];
   }//e
 
   //触摸结束时触发
   touchEnd(e) {
+    this.reduction()
     if (this.state.dargState === 1) {
         this.down()
     } else if (this.state.dargState === -1) {
         this.pull()
     }
-    this.reduction()
+    //this.reduction()
   }//e
 
   //上拉分页加载数据
@@ -171,16 +177,16 @@ class index extends Component {
     let downDragStyle = this.state.downDragStyle;
     let upDragStyle = this.state.upDragStyle;
     return (
-        <View className='wrap scrollView_fy' style={{display:"flex",flexDirection:"column"}}>
+        <View className='wrap scrollView_fy' style={{display:"flex",flexDirection:"column",position:"fixed",top:0}}>
             <View style='width:100%;height:10vh;background:#993;'>
               <Text>外侧统计条件</Text>
             </View>
-            <View className='dragUpdataPage' style={{flex:1}}>
+            {/* 滚动最外层容器 */}
+            <View className='dragUpdataPage' style={{height:"80vh",border:"1px solid red"}}>
                 <View className='downDragBox' style={downDragStyle}>
                     <AtActivityIndicator></AtActivityIndicator>
                     <Text className='downText'>{this.state.downText}</Text>
                 </View>
-                {/* 滚动区域 */}
                 <ScrollView
                   style={dargStyle}
                   className="dragUpdata"
@@ -194,8 +200,17 @@ class index extends Component {
                   //onScrollToLower={this.ScrollToLower.bind(this)}
                 >
                   {/* 滚动内容 */}
-                  <View style='width:100%;height:60vh;background:pink;' >
-                    aaaaaaaa
+                  <View style={{width:"100%",height:"200px",background:"pink"}}>
+                   A
+                  </View>
+                  <View style={{width:"100%",height:"200px",background:"#81F3E5"}}>
+                    B
+                  </View>
+                  <View style={{width:"100%",height:"200px",background:"#CCF381"}}>
+                    C
+                  </View>
+                  <View style={{width:"100%",height:"200px",background:"#81A7F3"}}>
+                    C
                   </View>
                 </ScrollView>
                 <View className='upDragBox' style={upDragStyle}>
