@@ -1,15 +1,9 @@
 import React, { Component } from 'react'
 import { View, Text } from '@tarojs/components'
+import './index.scss'
 
-import UiViewer from '../../components/taroUI/uiViewer';
-//测试页面
-export default class taroUIPage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-       name:"taroUIPage" 
-    };
-}
+export default class Index extends Component {
+
   componentWillMount () { }
 
   componentDidMount () { }
@@ -22,8 +16,8 @@ export default class taroUIPage extends Component {
 
   render () {
     return (
-      <View className='wrap taroUIPage'>
-        <UiViewer />
+      <View className='index'>
+        <Text>hello world</Text>
       </View>
     )
   }

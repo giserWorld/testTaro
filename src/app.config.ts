@@ -1,6 +1,6 @@
 export default {
   pages: [
-    'pages/index/index',
+    'pages/reduxPage/index',
     'pages/taroPage/index',
     'pages/taroUIPage/index',
   ],
@@ -11,8 +11,8 @@ export default {
     backgroundColor: "white",//tab 的背景色，仅支持十六进制颜色
     list: [//tab 的列表,最少2个、最多5个tab
       {
-        text: "首页",//tab上按钮文字
-        pagePath: "pages/index/index",//页面路径，必须在 pages 中先定义
+        text: "redux",//tab上按钮文字
+        pagePath: "pages/reduxPage/index",//页面路径，必须在 pages 中先定义
         selectedIconPath: "./assets/images/tabbar/home-selected.png",//选中时的图片路径，icon 大小限制为 40kb，建议尺寸为 81px * 81px，不支持网络图片
         iconPath: "./assets/images/tabbar/home.png",//图片路径，icon 大小限制为 40kb，建议尺寸为 81px * 81px，不支持网络图片
       },
