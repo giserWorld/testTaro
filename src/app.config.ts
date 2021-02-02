@@ -30,6 +30,11 @@ export default {
       },
     ],
   },
+  permission: {
+    'scope.userLocation': {
+      desc: '微信小程序将获取您的位置信息'
+    }
+  },
   window: {
     backgroundTextStyle: 'light',
     navigationBarBackgroundColor: '#fff',
