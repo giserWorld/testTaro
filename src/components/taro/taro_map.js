@@ -55,8 +55,8 @@ class taro_map extends Component {
       longitude:mapCenter.longitude,
       latitude:mapCenter.latitude,
       iconPath:positionIcon,//图标url
-      width: 44,
-      height: 56,
+      width: 18,
+      height: 26,
       anchor:{x:0.5,y:0.5}
     };
     this.setState({markers:[geo_marker]});
@@ -72,8 +72,8 @@ class taro_map extends Component {
         longitude:102.21,
         latitude:24.02,
         iconPath:positionIcon,//图标url
-        width: 44,
-        height: 56,
+        width: 18,
+        height: 26,
       };
       state={
         markers:[geo_marker]
