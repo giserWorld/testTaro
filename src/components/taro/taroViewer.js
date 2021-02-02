@@ -7,6 +7,7 @@ import Index from './taro_index';
 import Taro_Image from './taro_Image';
 import Taro_request from './taro_request';
 import Test_widget from './test_widget';
+import Taro_map from './taro_map';
 //Plugin
 import Plugin_banner from './plugin_Banner';
 import Plugin_NavBar from './plugin_NavBar';
@@ -29,7 +30,7 @@ class taroViewer extends Component {
   render () {
     return (
       <View className='wrap taroViewer'>
-        <Taro_ScrollView_fy name={this.state.name}/>
+        <Taro_map name={this.state.name}/>
       </View>
     )
   }

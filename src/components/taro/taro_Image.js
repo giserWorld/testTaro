@@ -14,11 +14,12 @@ export default class taro_Image extends Component {
   }
   render () {
     return (
-      <View className='testpage'>
+      <View className='wrap'>
         <Text className="my-h2">{this.state.name}</Text>
         <View className="boxDiv">
           <Image 
-            src="http://localhost:84/mapDatas/images/4.jpg"
+            style={{width:"34px",height:"43px"}}
+            src="https://qxh.l-try.com:9003/file/qxh/wxmini/tongyong/mapicon/biaozhu.png"
             mode="aspectFill"//图片裁剪、缩放的模式
           />
         </View>

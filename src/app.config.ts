@@ -3,6 +3,7 @@ export default {
     'pages/reduxPage/index',
     'pages/taroPage/index',
     'pages/taroUIPage/index',
+    'pages/appletPage/index',
   ],
   entryPagePath:"pages/taroPage/index",//指定小程序的默认启动路径(首页),默认为pages列表的第一项
   tabBar: {
@@ -25,6 +26,12 @@ export default {
       {
         text: "targoUI",
         pagePath: "pages/taroUIPage/index",
+        selectedIconPath: "./assets/images/tabbar/user-selected.png",
+        iconPath: "./assets/images/tabbar/user.png",
+      },
+      {
+        text: "applet",
+        pagePath: "pages/appletPage/index",
         selectedIconPath: "./assets/images/tabbar/user-selected.png",
         iconPath: "./assets/images/tabbar/user.png",
       },
