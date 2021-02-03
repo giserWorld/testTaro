@@ -57,6 +57,19 @@
     .stretchBtn{
         text-align: center;
     }
+    .stretchIcon{
+        cursor: pointer;
+        background: #736d6d;
+        border-radius: .625rem;
+        padding: 0 .3125rem 0 .5rem;
+    }
+    .coverView-address{
+        position:absolute;
+        left:0;
+        bottom:0;
+        background:rgba(0,49,251,0.5);
+        width: 100%;
+    }
 }
 
 

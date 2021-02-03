@@ -84,7 +84,7 @@ class taro_map extends Component {
             ref="wxMap"
             id="wxMap"
             className="wxMap"
-            style="width:100%;height:100%;overflow:hidden;"
+            style="width:100%;height:100%;"
             //subkey={this.state.subkey}
             setting={this.state.mapSetting}
             scale={this.state.scale}
@@ -94,19 +94,15 @@ class taro_map extends Component {
             //onRegionChange={this.onRegionChange.bind(this)}//视野发生变化时触发
             //markers={this.state.markers}//地图标记点
           />
-          <CoverView>
+          <CoverView className='coverView-address'>
             <ScrollView 
-              style={{position:"absolute",left:"0",bottom:"0",background:"rgba(0,49,251,0.5)"}}
               className='scrollview-address'
             >
               <View className="stretchBtn">
-                <AtIcon value={this.state.fontBtn} size="20" onClick={this.changeViewSize.bind(this)}></AtIcon>
+                <AtIcon className="stretchIcon" value={this.state.fontBtn} size="20" color="white" onClick={this.changeViewSize.bind(this)}></AtIcon>
               </View>
             </ScrollView>
           </CoverView>
-        </View>
-        <View style={{position:"absolute",left:"10px",top:"10%"}}>
-            
         </View>
       </View>
     )
