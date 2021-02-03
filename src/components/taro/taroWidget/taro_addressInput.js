@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text,Button,Map,Image,CoverView,ScrollView } from '@tarojs/components';
 import Taro from '@tarojs/taro';
+import { AtIcon } from 'taro-ui'
 import '../index.scss'
 let positionIcon="http://localhost:84/mapDatas/images/jdwddw.png";//位置图标
 /*********************taro_map**********************
@@ -32,6 +33,7 @@ class taro_map extends Component {
           enableSatellite: false,//是否开启卫星图
           enableTraffic: false,//是否开启实时路况
         },
+        fontBtn:"chevron-up",//"chevron-up"、"chevron-down"
       };
   }
   componentDidMount(){
@@ -62,10 +64,22 @@ class taro_map extends Component {
     });
   }//e
 
+  //点击收缩按钮
+  changeViewSize(){
+    let state=null;
+    if(this.state.fontBtn==="chevron-up"){
+      state={fontBtn:"chevron-down"};
+    }
+    else{
+      state={fontBtn:"chevron-up"};
+    }
+    this.setState(state);
+  }//e
+
   render () {
     return (
       <View className='wrap taro_map'>
-        <View class="wrap mapContainer" style={{position:"relative"}}>
+        <View class="wrap mapContainer mapAddress" style={{position:"relative"}}>
           <Map
             ref="wxMap"
             id="wxMap"
@@ -79,14 +93,17 @@ class taro_map extends Component {
             //onTap={this.onMapTap.bind(this)}//点击地图时触发
             //onRegionChange={this.onRegionChange.bind(this)}//视野发生变化时触发
             //markers={this.state.markers}//地图标记点
-          >
+          />
+          <CoverView>
             <ScrollView 
               style={{position:"absolute",left:"0",bottom:"0",background:"rgba(0,49,251,0.5)"}}
               className='scrollview-address'
             >
-              <Text>dddddddddddddd</Text>
+              <View className="stretchBtn">
+                <AtIcon value={this.state.fontBtn} size="20" onClick={this.changeViewSize.bind(this)}></AtIcon>
+              </View>
             </ScrollView>
-          </Map>
+          </CoverView>
         </View>
         <View style={{position:"absolute",left:"10px",top:"10%"}}>
             

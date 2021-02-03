@@ -47,10 +47,16 @@
         bottom: 0;
     }
 }
+//可滚动的地址搜索
 .scrollview-address{
     flex:1;
     overflow:"auto";
     min-height: 9.375rem;
+}
+.mapAddress{
+    .stretchBtn{
+        text-align: center;
+    }
 }
 
 
