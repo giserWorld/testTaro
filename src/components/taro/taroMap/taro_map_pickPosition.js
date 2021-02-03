@@ -1,16 +1,19 @@
 import React, { Component } from 'react'
-import { View, Text,Button,Map,Image } from '@tarojs/components';
+import { View, Text,Button,Map,Image,CoverView } from '@tarojs/components';
 import Taro from '@tarojs/taro';
-import './index.scss'
-let positionIcon="http://localhost:84/mapDatas/images/jdwddw.png";//位置图标
+import '../index.scss'
+let positionIcon="http://localhost:84/mapDatas/images/dwicon.png";//位置图标
 /*********************taro_map**********************
  *
 */
 class taro_map extends Component {
+  mapCtx=null;//地图map实例
+  userLocation=null;//用户位置,[x,y,z]
   constructor(props) {
       super(props);
       this.state = {
         name:"taro_map",
+        animationFlag:false,
         subkey:"4AXBZ-NELL5-BM5IU-QQRY4-W2BMV-XBFGT",
         center:[102.21,24.02],//中心点
         scale: 12,//缩放级别,取值范围为3-20
@@ -27,11 +30,17 @@ class taro_map extends Component {
           enableScroll: true,//是否支持拖动
           enableRotate: true,//是否支持旋转
           enableOverlooking: false,//开启俯视
-          enableSatellite: true,//是否开启卫星图
+          enableSatellite: false,//是否开启卫星图
           enableTraffic: false,//是否开启实时路况
         },
       };
   }
+  componentDidMount(){
+    //map实例
+    this.mapCtx =Taro.createMapContext('wxMap');
+  }//e
+
+
   //地图点击事件
   onMapTap(clickEvt){
     console.log("地图点击事件:",clickEvt);
@@ -44,10 +53,15 @@ class taro_map extends Component {
     let mapDetail=mpEvent.detail||{};//地图信息
     let mapCenter=mapDetail.centerLocation||null;//地图中心位置,{latitude:"",longitude:""}
     if(mpEventType=="begin"){//拖动地图开始
-      console.log("拖动事件begin:",changeEvt);
+      //console.log("拖动事件begin:",changeEvt);
     }
     else if(mpEventType=="end"){//拖动地图结束
       console.log("拖动事件end:",changeEvt);
+      //this.setState({animationFlag:true});
+      setTimeout(()=>{
+        //this.setState({animationFlag:false})
+      },600)
+      
     }
     if(!mapCenter)return false;
     let geo_marker={
@@ -55,15 +69,16 @@ class taro_map extends Component {
       longitude:mapCenter.longitude,
       latitude:mapCenter.latitude,
       iconPath:positionIcon,//图标url
-      width: 18,
-      height: 26,
+      width: 28,
+      height: 44.47,
       anchor:{x:0.5,y:0.5}
     };
-    this.setState({markers:[geo_marker]});
+    //this.setState({markers:[geo_marker]});
   }//e
 
   //点击函数
   clickFun(type){
+    let _self=this;
     let state=null;
     if(type=="添加marker"){
       //marker图标
@@ -72,8 +87,8 @@ class taro_map extends Component {
         longitude:102.21,
         latitude:24.02,
         iconPath:positionIcon,//图标url
-        width: 18,
-        height: 26,
+        width: 28,
+        height: 44.47,
       };
       state={
         markers:[geo_marker]
@@ -81,6 +96,22 @@ class taro_map extends Component {
     }
     else if(type=="获取地图map"){
       console.log("wxMap:",this.refs["wxMap"]); 
+    }
+    else if(type=="定位指定位置"){
+      //将地图中心移置指定位置
+      if(!_self.userLocation)return false;
+      this.mapCtx.moveToLocation({
+        longitude:_self.userLocation[0],
+        latitude:_self.userLocation[1]
+      });
+    }
+    else if(type=="地图中心坐标"){
+      //获取地图中心点(gcj02 坐标系)
+      this.mapCtx.getCenterLocation({
+        success:function(result){
+          console.log("mapCenter:",result);
+        }
+      });
     }
     this.setState(state);
   }//e
@@ -90,6 +121,7 @@ class taro_map extends Component {
         <View class="wrap mapContainer" style={{position:"relative"}}>
           <Map
             ref="wxMap"
+            id="wxMap"
             className="wxMap"
             style="width:100%;height:100%;"
             //subkey={this.state.subkey}
@@ -101,13 +133,12 @@ class taro_map extends Component {
             onRegionChange={this.onRegionChange.bind(this)}//视野发生变化时触发
             markers={this.state.markers}//地图标记点
           />
-          <View className="centerIcon">
-            <Image src={positionIcon} style={{width:"18px",height:"26px"}}></Image>
-          </View>
+          <CoverView className="centerIcon">
+            <Image src={positionIcon} className={this.state.animationFlag?"animation-move":""} style={{width:"1.75rem",height:"3.0275rem"}}></Image>
+          </CoverView>
         </View>
-        <View style={{position:"absolute",left:"10px",top:"10px"}}>
-            <Button size="mini" onClick={this.clickFun.bind(this,"获取地图map")}>获取地图map</Button><View></View>
-            <Button size="mini" onClick={this.clickFun.bind(this,"添加marker")}>添加marker</Button><View></View>
+        <View style={{position:"absolute",left:"10px",top:"10%"}}>
+            {/* <Button size="mini" onClick={this.clickFun.bind(this,"获取地图map")}>获取地图map</Button><View></View> */}
         </View>
       </View>
     )

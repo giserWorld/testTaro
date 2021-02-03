@@ -7,7 +7,14 @@ import Index from './taro_index';
 import Taro_Image from './taro_Image';
 import Taro_request from './taro_request';
 import Test_widget from './test_widget';
-import Taro_map from './taro_map';
+//taro地图
+import Taro_map from './taroMap/taro_map';
+import Taro_map_pickPosition from './taroMap/taro_map_pickPosition';
+import Taro_home from './taroMap/taro_home';
+//taroTest
+import Test_fixedContainer from './taroTest/test_fixedContainer';
+//taroWidget
+import Taro_addressInput from './taroWidget/taro_addressInput';
 //Plugin
 import Plugin_banner from './plugin_Banner';
 import Plugin_NavBar from './plugin_NavBar';
@@ -18,6 +25,8 @@ import Taro_showLoading from './taro_showLoading()';
 import Taro_login from './taro_login()';
 import Taro_ScrollView from './taro_ScrollView';
 import Taro_ScrollView_fy from './taro_ScrollView_fy';
+import Taro_showToast from './taro_showToast()';
+import Taro_getLocation from './taro_getLocation()';
 
 //taroViewer
 class taroViewer extends Component {
@@ -30,7 +39,7 @@ class taroViewer extends Component {
   render () {
     return (
       <View className='wrap taroViewer'>
-        <Taro_map name={this.state.name}/>
+        <Taro_addressInput name={this.state.name}/>
       </View>
     )
   }
