@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, Button } from '@tarojs/components';
+import { AtInput, AtForm } from 'taro-ui'
 import './index.scss'
 /*********************index**********************
  *

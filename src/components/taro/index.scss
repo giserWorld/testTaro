@@ -48,14 +48,10 @@
     }
 }
 //可滚动的地址搜索
-.scrollview-address{
-    flex:1;
-    overflow:"auto";
-    min-height: 9.375rem;
-}
 .mapAddress{
     .stretchBtn{
         text-align: center;
+        margin-top: .1875rem;
     }
     .stretchIcon{
         cursor: pointer;
@@ -63,12 +59,56 @@
         border-radius: .625rem;
         padding: 0 .3125rem 0 .5rem;
     }
+    .searchAddress{
+        display: flex;
+        align-items:center;
+    }
     .coverView-address{
-        position:absolute;
-        left:0;
-        bottom:0;
-        background:rgba(0,49,251,0.5);
+        background: white;
         width: 100%;
+        padding: .125rem .75rem;
+        min-height: 9.375rem;
+        display: flex;
+        flex-direction: column;
+    }
+    .addressInput{
+        background: rgba(240,240,240,0.8);
+        margin: .3125rem 0;
+        border-radius: .625rem;
+        padding: .3125rem;
+        height: 1.875rem;
+        flex: 1;
+    }
+    .addressInput-holder{
+        text-align: center;
+        //height: 9.375rem;
+    }
+    .currentAddress{
+        font-size: .8125rem;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: .3125rem 0;
+    }
+    .addressList{
+        flex:1;
+        overflow:auto;
+        .addressList-item{
+            padding: .9375rem .125rem;
+            border-bottom: 1px solid #C9CFC3;
+            display: flex;
+            justify-content: space-between;
+            align-items:center;
+        }
+        .addressList-item-text1{
+            font-size: 1rem;
+            font-weight: 500;
+            padding-bottom: .3125rem;
+        }
+        .addressList-item-text2{
+            font-size: .75rem;
+            color: gray;
+        }
     }
 }
 

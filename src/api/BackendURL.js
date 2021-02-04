@@ -4,6 +4,10 @@ var mockJSUrl="http://localhost:3005";
 //var mockJSUrl="http://192.168.167.129:3005";
 export let baseUrl="http://192.168.167.229:8188";//后台api接口基础路径
 const BackendURL={
+    //服务接口
+    gaodeMapKey:"0da56e0243aee1866b69f242519e4ba4",//高德地图key
+    getAddress_gd:"https://restapi.amap.com/v3/geocode/regeo",//高德"地理/逆地理编码"
+    inputAddressTip_gd:"https://restapi.amap.com/v3/assistant/inputtips",//高德"输入提示"
     //项目接口
     mapDWRegionFun_ht:baseUrl+"/ly/area/getOrgBound.lt",//地图后台定位bbox
     initLayerList2:baseUrl+"/ly/layer/getInitLayer.lt",//初始化图层列表
