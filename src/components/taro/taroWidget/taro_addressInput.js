@@ -208,11 +208,24 @@ class taro_map extends Component {
       scrollStyle:{height:"30%"}
     });
   }
+  //地图按钮   
+  mapBtnFun(type){
+    if(type=="取消"){
+
+    }
+    else if(type=="确定"){
+
+    }
+  }//e
 
   render () {
     return (
       <View className='wrap taro_map'>
         <View class="wrap mapContainer mapAddress" style={{position:"relative",display:"flex",flexDirection:"column"}}>
+          <CoverView className="btnTop">
+              <CoverView className="btnToptext" onClick={this.mapBtnFun.bind(this,"取消")}>取消</CoverView>
+              <CoverView className="btnToptext" style={{background:"#75D91E"}} onClick={this.mapBtnFun.bind(this,"确定")}>确定</CoverView>
+          </CoverView>
           <Map
             ref="wxMap"
             id="wxMap"

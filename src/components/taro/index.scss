@@ -49,6 +49,21 @@
 }
 //可滚动的地址搜索
 .mapAddress{
+    .btnTop{
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: .3125rem .625rem;
+    }
+    .btnToptext{
+        padding: .25rem;
+        font-size: .875rem;
+        border-radius: .25rem;
+    }
     .stretchBtn{
         text-align: center;
         margin-top: .1875rem;
