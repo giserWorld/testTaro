@@ -10,6 +10,8 @@ import './index.scss'
    1)<Button>
  *3.cover-view中不可嵌套组件:
    1)<Input>
+  *4.如果想在地图上面添加操作区域,可在<Map></Map>中添加<CoverView>标签即可,不能使用<View>标签
+     因为<View>标签添加到地图内部后,不能操作
 */
 class index extends Component {
   constructor(props) {

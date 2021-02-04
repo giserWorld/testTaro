@@ -40,6 +40,7 @@ class taro_map extends Component {
         userCurrentAddress:"",//用户当前位置地址
         scrollStyle:{height:"30%"},
         addressList:[],
+        currentPosition:null,//当前位置
       };
   }
   componentDidMount(){
@@ -182,10 +183,10 @@ class taro_map extends Component {
         ele.check=false;
       }
     });
-    _self.setState({addressList:newArray});
     //定位中心
     let location=(item.location||item.location.length!=0)?item.location:"";//"104.06568,30.660257"
     _self.zoomToCenter(location.split(",")[0],location.split(",")[1]);
+    _self.setState({addressList:newArray,currentPosition:[location.split(",")[0],location.split(",")[1]]});
   }//e
   onFocus_input(){
     this.setState({
@@ -205,17 +206,32 @@ class taro_map extends Component {
       fontBtn:"chevron-up",
       searchAddress:"",
       addressList:[],
-      scrollStyle:{height:"30%"}
+      scrollStyle:{height:"30%"},
+      currentPosition:null
     });
   }
   //地图按钮   
   mapBtnFun(type){
+    let param={};
     if(type=="取消"){
-
+      
     }
     else if(type=="确定"){
-
+      param={
+        currentPosition:this.state.currentPosition
+      }
     }
+    if(this.props.mapBtnFun)this.props.mapBtnFun(type,param);
+    console.log("mapBtnFun:",type,param);
+  }//e
+  mapToHome(){
+    let _self=this;
+    //将地图中心移置指定位置
+    if(!_self.userLocation)return false;
+    this.mapCtx.moveToLocation({
+      longitude:_self.userLocation[0],
+      latitude:_self.userLocation[1]
+    });
   }//e
 
   render () {
@@ -239,7 +255,9 @@ class taro_map extends Component {
             //onTap={this.onMapTap.bind(this)}//点击地图时触发
             //onRegionChange={this.onRegionChange.bind(this)}//视野发生变化时触发
             //markers={this.state.markers}//地图标记点
-          />
+          >
+            <CoverView className="mapHomeWidget" onClick={this.mapToHome.bind(this)}>H</CoverView>
+          </Map>
           <View className='coverView-address' style={this.state.scrollStyle}>
             <View className="stretchBtn">
               <AtIcon className="stretchIcon" value={this.state.fontBtn} size="20" color="white" onClick={this.changeViewSize.bind(this)}></AtIcon>
