@@ -24,6 +24,7 @@ import Taro_ScrollView from './taro_ScrollView';
 import Taro_ScrollView_fy from './taro_ScrollView_fy';
 import Taro_showToast from './taro_showToast()';
 import Taro_getLocation from './taro_getLocation()';
+import Taro_api_getStorageSync from './taro_api_getStorageSync()';
 //组件
 import Index from './taro_index';
 import Taro_Image from './taro_Image';
@@ -42,7 +43,7 @@ class taroViewer extends Component {
   render () {
     return (
       <View className='wrap taroViewer'>
-        <Taro_addressInput name={this.state.name}/>
+        <Taro_api_getStorageSync name={this.state.name}/>
       </View>
     )
   }
